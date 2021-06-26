@@ -4,6 +4,4 @@
  * @author: exode <info@exode.ru>
  */
 
-export * from './common';
-export * from './back';
-export * from './front';
+export * from './build';
