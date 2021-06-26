@@ -3,6 +3,6 @@
  *
  * @author: exode <info@exode.ru>
  */
-export * from './build/common';
-export * from './build/back';
-export * from './build/front';
+export * from './build/src/common';
+export * from './build/src/back';
+export * from './build/src/front';
