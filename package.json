@@ -1,0 +1,25 @@
+{
+  "name": "exode-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aslanorlov/exode-utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aslanorlov/exode-utils/issues"
+  },
+  "homepage": "https://github.com/aslanorlov/exode-utils#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.170",
+    "axios": "^0.21.1",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2"
+  }
+}
