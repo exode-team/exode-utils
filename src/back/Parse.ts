@@ -3,6 +3,8 @@
  *
  * @author: exode <info@exode.ru>
  */
+import { SimpleObject } from '../../types';
+
 
 class Parse {
 
@@ -11,7 +13,7 @@ class Parse {
      * @param method
      * @returns {{}}
      */
-    public static methodParams(method) {
+    public static methodParams(method: string) {
         const replaces = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
 
         const methodCode = method.toString();
@@ -22,18 +24,16 @@ class Parse {
         const brackets = methodCode.slice(start, finish).replace(replaces, '');
         const parsed = brackets.match(/([^\s,]+)/g) || [];
 
-        const parse = (value) => {
+        const parse = (value: string) => {
             const numTypes = [ 'number', 'string' ];
             const isNumeric = numTypes.includes(typeof value) && !isNaN(Number(value));
 
-            value = isNumeric
+            return isNumeric
                 ? Number(value)
                 : (String(value).includes(`'`) ? value.replace(/'/g, '') : value);
-
-            return value;
         };
 
-        const params = {};
+        const params: SimpleObject = {};
 
         for (let i = 0; i < parsed.length; i++) {
             const param = parsed[i];

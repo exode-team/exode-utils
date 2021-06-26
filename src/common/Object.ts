@@ -42,7 +42,7 @@ class ObjectUtil {
     public static makeValueAsName(object = {}) {
         const result: any = {};
 
-        _.map(object, (value, key) => result[key] = key);
+        _.map(object, (_value, key) => result[key] = key);
 
         return result;
     }

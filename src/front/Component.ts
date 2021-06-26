@@ -6,7 +6,7 @@
 
 import React, { ReactElement } from 'react';
 
-import { SimpleObject } from '../types';
+import { SimpleObject } from '../../types';
 
 
 type NamedChildrenProps = { cname: string }
@@ -23,7 +23,7 @@ class Component {
     public static getNamedChildren(children: React.ReactNode) {
         const result: SimpleObject = {};
 
-        React.Children.forEach(children, (child) => {
+        React.Children.forEach(children, (child: any) => {
             const element = child as ReactElement;
             const type = element.type as unknown as NamedChildrenProps;
             const name = type?.cname;

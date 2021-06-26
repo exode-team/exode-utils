@@ -1,11 +1,26 @@
 {
   "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "createScopedElement",
+    "target": "esnext",
     "lib": [
       "es6",
       "dom",
       "es2017"
     ],
-    "target": "es5",
-    "esModuleInterop": true
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "strict": false,
+    "baseUrl": "src",
+    "allowJs": true
   }
 }
