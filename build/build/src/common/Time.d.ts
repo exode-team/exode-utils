@@ -3,16 +3,11 @@
  *
  * @author: exode <info@exode.ru>
  */
-class Time {
+export class Time {
     /**
      * Using setTimeout in async functions
      * @param {number} ms
      * @returns {Promise<boolean>}
      */
-    static async timer(ms) {
-        return new Promise(resolve => {
-            setTimeout(() => resolve(true), ms);
-        });
-    }
+    static timer(ms: number): Promise<boolean>;
 }
-export { Time };

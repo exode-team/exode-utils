@@ -3,15 +3,12 @@
  *
  * @author: exode <info@exode.ru>
  */
-class NumberUtil {
+export class NumberUtil {
     /**
      * Division of a number by digits
      * @param {number} x
      * @param delimiter
      * @returns {string}
      */
-    static splitByDecimal(x = 0, delimiter = ',') {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
-    }
+    static splitByDecimal(x?: number, delimiter?: string): string;
 }
-export { NumberUtil };
