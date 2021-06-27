@@ -2,7 +2,7 @@
   "name": "exode-utils",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build:types": " tsc --outDir ./build --declaration --allowJs --emitDeclarationOnly",
     "build:js": " tsc --outDir ./build",
