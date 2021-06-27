@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --outDir ./build",
+    "build": " tsc --outDir ./build --declaration --allowJs --emitDeclarationOnly",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
