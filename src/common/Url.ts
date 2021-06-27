@@ -31,7 +31,7 @@ class Url {
      * @returns {{}}
      */
     public static parseQuery(queryString: string, delimiter = '=', glue = '&'): SimpleObject {
-        const query:SimpleObject = {};
+        const query: SimpleObject = {};
 
         const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split(glue);
 
