@@ -3,7 +3,7 @@
  *
  * @author: exode <info@exode.ru>
  */
-import { SimpleObject } from '../../types';
+import { SimpleObject } from './types';
 
 
 class Parse {

@@ -6,7 +6,7 @@
 
 import _ from 'lodash';
 
-import { SimpleObject } from '../../types';
+import { SimpleObject } from './types';
 
 
 class Url {

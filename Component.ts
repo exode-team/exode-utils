@@ -6,7 +6,7 @@
 
 import React, { ReactElement } from 'react';
 
-import { SimpleObject } from '../../types';
+import { SimpleObject } from './types';
 
 
 type NamedChildrenProps = { cname: string }
