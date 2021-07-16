@@ -28,7 +28,9 @@ class Component {
             const type = element.type as unknown as NamedChildrenProps;
             const name = type?.cname;
 
-            if (!name) return;
+            if (!name) {
+                return;
+            }
 
             result[name] = element;
         });
