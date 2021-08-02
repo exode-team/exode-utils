@@ -38,11 +38,16 @@ class ObjectUtil {
     /**
      * Значения свойств меняются на названия их ключей
      * @param {{}} object
+     * @param prefix
      */
-    public static makeValueAsName(object = {}) {
+    public static makeValueAsName(object = {}, prefix = '') {
         const result: any = {};
 
-        _.map(object, (_value, key) => result[key] = key);
+        _.map(object, (_value, key) => {
+            result[key] = _.isObject(_value) && !Array.isArray(_value)
+                ? this.makeValueAsName(_value, `${key}.`)
+                : (prefix + key);
+        });
 
         return result;
     }
