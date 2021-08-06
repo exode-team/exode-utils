@@ -35,6 +35,10 @@ class Url {
 
         const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split(glue);
 
+        if (!queryString?.trim()) {
+            return query;
+        }
+
         for (let i = 0; i < pairs.length; i++) {
             const pair = pairs[i].split(delimiter);
             query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
