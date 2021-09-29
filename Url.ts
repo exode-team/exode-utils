@@ -15,12 +15,15 @@ class Url {
      * Transform object to encoded http query string
      * @param object
      * @param glue
+     * @param addQuery - add "?" if not empty return string
      * @returns {string}
      */
-    public static objectToQuery(object: {}, glue: string = '&') {
-        return _.map(object, (value, key) => {
+    public static objectToQuery(object: {}, glue: string = '&', addQuery = false) {
+        const query = _.map(object, (value, key) => {
             return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
         }).join(glue);
+
+        return (addQuery && query ? '?' : '') + query;
     }
 
     /**

@@ -9,7 +9,9 @@ import React, { ReactElement } from 'react';
 import { SimpleObject } from './types';
 
 
-type NamedChildrenProps = { cname: string }
+interface NamedChildrenProps  {
+    cname: string;
+}
 
 
 class Component {
