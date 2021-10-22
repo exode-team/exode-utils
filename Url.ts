@@ -4,7 +4,7 @@
  * @author: exode <info@exode.ru>
  */
 
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 import { SimpleObject } from './types';
 
