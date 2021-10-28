@@ -19,7 +19,9 @@ class Url {
      * @returns {string}
      */
     public static objectToQuery(object: {}, glue: string = '&', addQuery = false) {
-        const query = _.map(object, (value, key) => {
+        const query = _.map(object, (value: any, key: string) => {
+            value = _.isString(value) ? value : JSON.stringify(value);
+
             return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
         }).join(glue);
 
