@@ -6,10 +6,8 @@
 
 import React, { ReactElement } from 'react';
 
-import { SimpleObject } from './types';
 
-
-interface NamedChildrenProps  {
+interface NamedChildrenProps {
     cname: string;
 }
 
@@ -23,7 +21,7 @@ class Component {
      * @returns {{[p: string]: any}}
      */
     public static getNamedChildren(children: React.ReactNode) {
-        const result: SimpleObject = {};
+        const result: { [key: string]: ReactElement | JSX.Element } = {};
 
         React.Children.forEach(children, (child: any) => {
             const element = child as ReactElement;
