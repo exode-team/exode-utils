@@ -18,7 +18,7 @@ class Url {
      * @param addQuery - add "?" if not empty return string
      * @returns {string}
      */
-    public static objectToQuery(object: {}, glue: string = '&', addQuery = false) {
+    static objectToQuery(object: {}, glue: string = '&', addQuery = false) {
         const query = _.map(object, (value: any, key: string) => {
             value = _.isString(value) ? value : JSON.stringify(value);
 
@@ -35,7 +35,7 @@ class Url {
      * @param delimiter
      * @returns {{}}
      */
-    public static parseQuery(queryString: string, delimiter = '=', glue = '&'): SimpleObject {
+    static parseQuery(queryString: string, delimiter = '=', glue = '&'): SimpleObject {
         const query: SimpleObject = {};
 
         const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split(glue);
@@ -58,7 +58,7 @@ class Url {
      * @param post
      * @returns {string}
      */
-    public static openApp(params: object, post = false) {
+    static openApp(params: object, post = false) {
         const query = Url.objectToQuery(params);
         const file = post ? 'post-message' : 'openapp';
 

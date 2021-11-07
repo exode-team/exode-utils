@@ -16,7 +16,7 @@ class ObjectUtil {
      * @param {any[]} array
      * @returns {any[]}
      */
-    public static collectPropValues(object: object, key: string | number, array: any[] = []) {
+    static collectPropValues(object: object, key: string | number, array: any[] = []) {
         _.forOwn(object, (value: any) => value[key]
             ? array.push(value[key])
             : _.isObject(value) ? this.collectPropValues(value, key, array) : '',
@@ -31,7 +31,7 @@ class ObjectUtil {
      * @param second
      * @returns {boolean}
      */
-    public static isEqual(first: any, second: any) {
+    static isEqual(first: any, second: any) {
         return JSON.stringify(first || {}) === JSON.stringify(second || {});
     }
 
@@ -40,7 +40,7 @@ class ObjectUtil {
      * @param {{}} object
      * @param prefix
      */
-    public static makeValueAsName(object = {}, prefix = '') {
+    static makeValueAsName(object = {}, prefix = '') {
         const result: any = {};
 
         _.map(object, (_value, key) => {

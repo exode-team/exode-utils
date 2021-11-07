@@ -20,7 +20,7 @@ class DbJson {
      * @returns {any}
      * @private
      */
-    public static parse(value: string | undefined) {
+    static parse(value: string | undefined) {
         const dbValue = JSON.parse(String(value || '{}'));
 
         return dbValue[this.saveKey] !== undefined ? dbValue[this.saveKey] : dbValue;
@@ -32,7 +32,7 @@ class DbJson {
      * @returns {string}
      * @private
      */
-    public static prepare(value: any) {
+    static prepare(value: any) {
         const isJsonable = [ 'array', 'object' ].includes(typeof value);
 
         return JSON.stringify(isJsonable ? value : { [this.saveKey]: value });
@@ -45,7 +45,7 @@ class DbJson {
      * @param value
      * @returns {(string | any)[]}
      */
-    public static contain(field: string, path: string, value: any): [ string, string[] ] {
+    static contain(field: string, path: string, value: any): [ string, string[] ] {
         return [
             `JSON_CONTAINS(${field}, ?, '$.${path}')`,
             [ JSON.stringify(value) ],

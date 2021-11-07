@@ -11,7 +11,7 @@ class Time {
      * @param {number} ms
      * @returns {Promise<boolean>}
      */
-    public static async timer(ms: number) {
+    static async timer(ms: number) {
         return new Promise<boolean>(resolve => {
             setTimeout(() => resolve(true), ms);
         });

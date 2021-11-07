@@ -20,7 +20,7 @@ class Component {
      * @param {React.ReactNode} children
      * @returns {{[p: string]: any}}
      */
-    public static getNamedChildren(children: React.ReactNode) {
+    static getNamedChildren(children: React.ReactNode) {
         const result: { [key: string]: ReactElement | JSX.Element } = {};
 
         React.Children.forEach(children, (child: any) => {

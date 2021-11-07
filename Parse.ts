@@ -13,7 +13,7 @@ class Parse {
      * @param method
      * @returns {{}}
      */
-    public static methodParams(method: string) {
+    static methodParams(method: string) {
         const replaces = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
 
         const methodCode = method.toString();

@@ -12,7 +12,7 @@ class NumberUtil {
      * @param delimiter
      * @returns {string}
      */
-    public static splitByDecimal(x: number = 0, delimiter: string = ',') {
+    static splitByDecimal(x: number = 0, delimiter: string = ',') {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
     }
 

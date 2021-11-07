@@ -16,7 +16,7 @@ class Request {
      * @param config
      * @returns {Promise<any>}
      */
-    public static async post(url: string, data?: any, config?: AxiosRequestConfig | undefined) {
+    static async post(url: string, data?: any, config?: AxiosRequestConfig | undefined) {
         try {
             const content = await axios.post(url, data, config);
 
@@ -32,7 +32,7 @@ class Request {
      * @param data
      * @returns {Promise<any>}
      */
-    public static async get(url: string, data?: AxiosRequestConfig) {
+    static async get(url: string, data?: AxiosRequestConfig) {
         try {
             const content = await axios.get(url, data);
 
