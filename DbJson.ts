@@ -1,7 +1,7 @@
 /**
  * DbJson util
  *
- * @author: exode <info@exode.ru>
+ * @author: exode <hello@exode.ru>
  */
 
 

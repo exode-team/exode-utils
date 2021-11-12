@@ -1,7 +1,7 @@
 /**
  * Component
  *
- * @author: exode <info@exode.ru>
+ * @author: exode <hello@exode.ru>
  */
 
 import React, { ReactElement } from 'react';

@@ -1,7 +1,7 @@
 /**
  * Parse util
  *
- * @author: exode <info@exode.ru>
+ * @author: exode <hello@exode.ru>
  */
 import { SimpleObject } from './types';
 
