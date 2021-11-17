@@ -14,8 +14,12 @@ class Scroll {
         return window.scrollY;
     }
 
-    static freezeScroll(hasOverlay: boolean) {
-        if (hasOverlay) {
+    /**
+     * Toggle scrollable property on the body element
+     * @param {boolean} freeze
+     */
+    static freezeScroll(freeze: boolean) {
+        if (freeze) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
