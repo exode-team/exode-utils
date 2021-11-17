@@ -14,6 +14,14 @@ class Scroll {
         return window.scrollY;
     }
 
+    static freezeScroll(hasOverlay: boolean) {
+        if (hasOverlay) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
     /**
      * Scroll window to the specified height
      * @param {number} top
