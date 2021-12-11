@@ -12,6 +12,28 @@ import { SimpleObject } from './types';
 class Url {
 
     /**
+     * Retrieve get parameters from link/location
+     * @param {string} link
+     * @returns {SimpleObject}
+     */
+    static getParams(link?: string) {
+        return this.parseQuery(link || window.location.search.slice(1));
+    }
+
+    /**
+     * Get [name] parameter from url
+     * @param name
+     * @param byDefault
+     * @param {string} link
+     * @returns {SimpleObject}
+     */
+    static getParam(name: string, byDefault = '', link?: string) {
+        const param = this.getParams(link)[name];
+
+        return !_.isNil(param) ? param : byDefault;
+    }
+
+    /**
      * Transform object to encoded http query string
      * @param object
      * @param glue
