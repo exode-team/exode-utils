@@ -30,7 +30,7 @@ class Url {
     static getParam(name: string, byDefault = '', link?: string) {
         const param = this.getParams(link)[name];
 
-        return !_.isNil(param) ? param : byDefault;
+        return !_.isUndefined(param) ? param : byDefault;
     }
 
     /**
