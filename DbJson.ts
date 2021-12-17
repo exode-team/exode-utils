@@ -14,15 +14,20 @@ class DbJson {
             select.push(`(${field} -> '${key}') AS "${key}"`);
         });
 
-        return select.join(' ');
+        return select.join(', ');
     }
 
     static where(field: string, key: string, value: any) {
         return [
-            `WHERE ${field}::jsonb @> '{"${key}": ":${key}"}'`,
-            { [key]: value },
-        ];
+            `${field}::jsonb @> :${key}`,
+            { [key]: { [key]: value } },
+        ] as [ string, {} ];
     }
+
+    getOne() {
+
+    }
+
 }
 
 
