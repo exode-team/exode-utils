@@ -7,51 +7,22 @@
 
 class DbJson {
 
-    /**
-     * Key for not jsonable values
-     * @type {string}
-     * @private
-     */
-    protected static saveKey = '__not-jsonable-value';
+    static select<T>(field: keyof T, ...keys: string[]) {
+        const select: string[] = [];
 
-    /**
-     * Parse persisted value
-     * @param {string | undefined} value
-     * @returns {any}
-     * @private
-     */
-    static parse(value: string | undefined) {
-        const dbValue = JSON.parse(String(value || '{}'));
+        keys?.forEach((key) => {
+            select.push(`(${field} -> '${key}') AS "${key}"`);
+        });
 
-        return dbValue[this.saveKey] !== undefined ? dbValue[this.saveKey] : dbValue;
+        return select.join(' ');
     }
 
-    /**
-     * Prepare value before persist
-     * @param value
-     * @returns {string}
-     * @private
-     */
-    static prepare(value: any) {
-        const isJsonable = [ 'array', 'object' ].includes(typeof value);
-
-        return JSON.stringify(isJsonable ? value : { [this.saveKey]: value });
-    }
-
-    /**
-     * Generate a part of json contain mysql query
-     * @param {string} field
-     * @param {string} path
-     * @param value
-     * @returns {(string | any)[]}
-     */
-    static contain(field: string, path: string, value: any): [ string, string[] ] {
+    static where(field: string, key: string, value: any) {
         return [
-            `JSON_CONTAINS(${field}, ?, '$.${path}')`,
-            [ JSON.stringify(value) ],
+            `WHERE ${field}::jsonb @> '{"${key}": ":${key}"}'`,
+            { [key]: value },
         ];
     }
-
 }
 
 
