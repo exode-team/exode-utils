@@ -3,7 +3,6 @@
  *
  * @author: exode <hello@exode.ru>
  */
-import { SimpleObject } from './types';
 
 
 class Parse {
@@ -33,7 +32,7 @@ class Parse {
                 : (String(value).includes(`'`) ? value.replace(/'/g, '') : value);
         };
 
-        const params: SimpleObject = {};
+        const params: Record<string | number, any> = {};
 
         for (let i = 0; i < parsed.length; i++) {
             const param = parsed[i];

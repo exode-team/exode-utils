@@ -1,5 +1,5 @@
 /**
- * Component
+ * Types
  *
  * @author: exode <hello@exode.ru>
  */

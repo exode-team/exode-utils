@@ -6,8 +6,6 @@
 
 import * as _ from 'lodash';
 
-import { SimpleObject } from './types';
-
 
 class Url {
 
@@ -57,8 +55,8 @@ class Url {
      * @param delimiter
      * @returns {{}}
      */
-    static parseQuery(queryString: string, delimiter = '=', glue = '&'): SimpleObject {
-        const query: SimpleObject = {};
+    static parseQuery(queryString: string, delimiter = '=', glue = '&'): Record<string | number, any> {
+        const query: Record<string | number, any> = {};
 
         const pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split(glue);
 
@@ -80,7 +78,7 @@ class Url {
      * @param post
      * @returns {string}
      */
-    static openApp(params: object, post = false) {
+    static openApp(params: Record<any, any>, post = false) {
         const query = Url.objectToQuery(params);
         const file = post ? 'post-message' : 'openapp';
 

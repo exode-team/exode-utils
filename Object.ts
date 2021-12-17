@@ -16,7 +16,7 @@ class ObjectUtil {
      * @param {any[]} array
      * @returns {any[]}
      */
-    static collectPropValues(object: object, key: string | number, array: any[] = []) {
+    static collectPropValues(object: Record<any, any>, key: string | number, array: any[] = []) {
         _.forOwn(object, (value: any) => value[key]
             ? array.push(value[key])
             : _.isObject(value) ? this.collectPropValues(value, key, array) : '',
