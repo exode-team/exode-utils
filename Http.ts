@@ -1,5 +1,5 @@
 /**
- * Request util
+ * Http util
  *
  * @author: exode <hello@exode.ru>
  */
@@ -7,7 +7,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 
-class Request {
+class Http {
 
     /**
      * Send post request
@@ -16,13 +16,11 @@ class Request {
      * @param config
      * @returns {Promise<any>}
      */
-    static async post(url: string, data?: any, config?: AxiosRequestConfig | undefined) {
+    static async post<R>(url: string, data?: any, config?: AxiosRequestConfig | undefined) {
         try {
-            const content = await axios.post(url, data, config);
-
-            return content.data;
+            return axios.post<R>(url, data, config);
         } catch (e) {
-            return false;
+            return { data: false } as { data: false };
         }
     }
 
@@ -34,15 +32,13 @@ class Request {
      */
     static async get(url: string, data?: AxiosRequestConfig) {
         try {
-            const content = await axios.get(url, data);
-
-            return content.data;
+            return axios.get(url, data);
         } catch (e) {
-            return false;
+            return { data: false };
         }
     }
 
 }
 
 
-export { Request };
+export { Http };
