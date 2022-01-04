@@ -4,7 +4,6 @@
  * @author: exode <hello@exode.ru>
  */
 
-
 class DbJson {
 
     static select<T>(field: keyof T, ...keys: string[]) {
@@ -17,10 +16,14 @@ class DbJson {
         return select.join(', ');
     }
 
-    static where(field: string, key: string, value: any) {
+    static where<T>(field: keyof T, key: string, value: any, ...tree: string[]) {
+        const path = tree.length
+            ? [ '', ...tree.map((i) => `'${i}'`) ].join('->')
+            : '::jsonb';
+
         return [
-            `${field}::jsonb @> :${key}`,
-            { [key]: { [key]: value } },
+            `${field}${path} @> :${key}`,
+            { [key]: tree.length ? JSON.stringify(value) : { [key]: value } },
         ] as [ string, {} ];
     }
 
