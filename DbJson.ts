@@ -27,10 +27,6 @@ class DbJson {
         ] as [ string, {} ];
     }
 
-    getOne() {
-
-    }
-
 }
 
 
