@@ -22,21 +22,21 @@ class Time {
 
     /**
      * Parse date by format
-     * @param {Date} date
+     * @param {Date | string} date
      * @param {string} format
      * @returns {string}
      */
-    static parseDate(date: Date, format: string = 'D MMM YYYY HH:mm'): string {
+    static parseDate(date: Date | string, format: string = 'D MMM YYYY HH:mm'): string {
         return moment(date, moment.ISO_8601).format(format);
     }
 
     /**
      * Get left dates with dates
-     * @param to
-     * @param {Date} from
+     * @param {Date | string} to
+     * @param {Date | string} from
      * @returns {number}
      */
-    static getDaysLeft(to: Date, from?: Date): number {
+    static getDaysLeft(to: Date | string, from?: Date | string): number {
         const source = moment(from || new Date());
 
         const target = moment(to);
