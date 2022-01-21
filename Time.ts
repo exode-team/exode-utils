@@ -44,6 +44,34 @@ class Time {
         return target.diff(source, 'days');
     }
 
+    /**
+     * Parse date to VKUI datepicker
+     * @param {Date | string} date
+     * @returns {{month: number, year: number, day: number}}
+     */
+    static parseToDatePicker(date: Date | string) {
+        const parsed = moment(date).toObject();
+
+        return {
+            day: parsed.date,
+            month: parsed.months + 1,
+            year: parsed.years,
+        };
+    }
+
+    /**
+     * Parse fate from VKUI datepicker
+     * @param {Record<string, number>} date
+     * @returns {string}
+     */
+    static parseFromDatePicker(date: Record<string, number>) {
+        const { day, month, year } = date;
+
+        return moment({ day, month: month - 1, year })
+            .utc()
+            .format();
+    }
+
 }
 
 
