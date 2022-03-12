@@ -4,6 +4,9 @@
  * @author: exode <hello@exode.ru>
  */
 
+type ValueType = 'array' | 'object' | 'string' | 'number'
+
+
 class DbJson {
 
     static select<T>(field: keyof T, ...keys: string[]) {
@@ -29,5 +32,34 @@ class DbJson {
 
 }
 
+/**
+ * Parse value from packed JSON.stringify
+ * @param {ValueType} type
+ * @param value
+ * @param byDefault
+ * @returns {any}
+ */
+const parseValue = (type: ValueType, value: any, byDefault: any = null) => {
+    switch (type) {
+        case 'array':
+            return JSON.parse(value || byDefault || '[]');
+        case 'object':
+            return JSON.parse(value || byDefault || '{}');
+        case 'string':
+            return String(JSON.parse(value || byDefault));
+        case 'number':
+            return Number(JSON.parse(value || byDefault));
+    }
+};
 
-export { DbJson };
+/**
+ * Pack value before saving
+ * @param value
+ * @returns {string}
+ */
+const packValue = (value: any) => {
+    return JSON.stringify(value || '');
+};
+
+
+export { DbJson, parseValue, packValue };
