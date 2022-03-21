@@ -21,20 +21,29 @@ class NumberUtil {
      * @returns {Array<string>}
      * @param array
      */
-    static getRanges(array: number[]): string[] {
+    static getRanges(array: number[]) {
         const ranges = [];
-        let start, rend;
+        let start, last, length;
 
         for (let i = 0; i < array.length; i++) {
+            length = 0;
             start = array[i];
-            rend = start;
+            last = start;
 
             while (array[i + 1] - array[i] == 1) {
-                rend = array[i + 1];
+                last = array[i + 1];
+                length++;
                 i++;
             }
 
-            ranges.push(start == rend ? start + '' : start + '-' + rend);
+            const alone = start === last;
+
+            if (alone || length <= 1) {
+                alone ? ranges.push(start) : ranges.push(start, last);
+                continue;
+            }
+
+            ranges.push(start + '-' + last);
         }
 
         return ranges;

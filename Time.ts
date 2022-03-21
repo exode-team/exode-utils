@@ -31,6 +31,24 @@ class Time {
     }
 
     /**
+     * Parse date relatively
+     * @param {Date | string} date
+     * @param dateFormat
+     * @returns {string}
+     */
+    static parseRelative(date: Date | string, dateFormat = 'DD MMMM в HH:mm') {
+        const dates = {
+            nextWeek: dateFormat,
+            lastDay: dateFormat,
+            lastWeek: dateFormat,
+            sameElse: dateFormat,
+        };
+
+        return moment(date, moment.ISO_8601)
+            .calendar(null, dates);
+    }
+
+    /**
      * Get left dates with dates
      * @param {Date | string} to
      * @param {Date | string} from
