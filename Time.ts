@@ -38,9 +38,11 @@ class Time {
      */
     static parseRelative(date: Date | string, dateFormat = 'DD MMMM в HH:mm') {
         const dates = {
-            nextWeek: dateFormat,
-            lastDay: dateFormat,
             lastWeek: dateFormat,
+            lastDay: '[Вчера, в] HH:mm',
+            sameDay: '[Сегодня, в] HH:mm',
+            nextDay: '[Завтра, в] HH:mm',
+            nextWeek: dateFormat,
             sameElse: dateFormat,
         };
 
