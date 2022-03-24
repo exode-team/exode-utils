@@ -4,6 +4,9 @@
  * @author: exode <hello@exode.ru>
  */
 
+import * as _ from 'lodash';
+
+
 type ValueType = 'array' | 'object' | 'string' | 'number'
 
 
@@ -28,6 +31,15 @@ class DbJson {
             `${field}${path} @> :${key}`,
             { [key]: tree.length ? JSON.stringify(value) : { [key]: value } },
         ] as [ string, {} ];
+    }
+
+    static whereIn<T>(field: keyof T, data: string[] | Record<string, any>) {
+        const array = Array.isArray(data) ? data : _.get(data, field);
+
+        return [
+            `"${field}"::jsonb @> :${field}`,
+            { [field]: JSON.stringify(array) },
+        ] as [ string, Record<string, string> ];
     }
 
 }
