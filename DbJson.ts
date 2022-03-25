@@ -5,6 +5,7 @@
  */
 
 import * as _ from 'lodash';
+import { customAlphabet } from 'nanoid';
 
 
 type ValueType = 'array' | 'object' | 'string' | 'number'
@@ -34,11 +35,12 @@ class DbJson {
     }
 
     static whereIn<T>(field: keyof T, data: string[] | Record<string, any>) {
+        const prefix = customAlphabet(String(field), 4)();
         const array = Array.isArray(data) ? data : _.get(data, field);
 
         return [
-            `"${field}"::jsonb @> :${field}`,
-            { [field]: JSON.stringify(array) },
+            `"${field}"::jsonb @> :${prefix + field}`,
+            { [prefix + field]: JSON.stringify(array) },
         ] as [ string, Record<string, string> ];
     }
 
