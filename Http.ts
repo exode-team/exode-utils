@@ -32,11 +32,13 @@ class Http {
      * @param data
      * @returns {Promise<any>}
      */
-    static async get(url: string, data?: AxiosRequestConfig) {
+    static async get<R>(url: string, data?: AxiosRequestConfig) {
         try {
-            return axios.get(url, data);
+            const result = await axios.get(url, data);
+
+            return result as AxiosResponse<R>;
         } catch (e) {
-            return { data: false };
+            return { data: false } as { data: false };
         }
     }
 
