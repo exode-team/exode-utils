@@ -1,17 +1,18 @@
 /**
- * DbJson util
+ * Db util
  *
  * @author: exode <hello@exode.ru>
  */
 
 import * as _ from 'lodash';
+
 import { customAlphabet } from 'nanoid';
 
 
 type ValueType = 'array' | 'object' | 'string' | 'number'
 
 
-class DbJson {
+class Db {
 
     static select<T>(field: keyof T, ...keys: string[]) {
         const select: string[] = [];
@@ -42,6 +43,21 @@ class DbJson {
             `"${field}"::jsonb @> :${prefix + field}`,
             { [prefix + field]: JSON.stringify(array) },
         ] as [ string, Record<string, string> ];
+    }
+
+    static whereField(field: string, value: any) {
+        return [
+            `"${field}" = :${field}`,
+            { key: value },
+        ] as [ string, Record<string, any> ];
+    }
+
+    static whereId(value: any, field = 'id') {
+        return this.whereField(field, value);
+    }
+
+    static whereKey(value: any, field = 'key') {
+        return this.whereField(field, value);
     }
 
 }
@@ -76,4 +92,4 @@ const packValue = (value: any) => {
 };
 
 
-export { DbJson, parseValue, packValue };
+export { Db, parseValue, packValue };

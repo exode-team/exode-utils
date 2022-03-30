@@ -4,7 +4,7 @@
  * @author: exode <hello@exode.ru>
  */
 
-export * from './DbJson';
+export * from './Db';
 export * from './Number';
 export * from './Object';
 export * from './Parse';
