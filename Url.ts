@@ -79,7 +79,7 @@ class Url {
      * @param origin
      * @returns {string}
      */
-    static openApp(params: Record<any, any>, post = false, origin = process.env.APP_URL) {
+    static openApp(params: Record<any, any>, post = false, origin: string) {
         const query = Url.objectToQuery(params);
         const file = post ? 'post-message' : 'openapp';
 
