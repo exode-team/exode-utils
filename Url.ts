@@ -76,13 +76,14 @@ class Url {
      * Generate link for native app or post message page in browser window
      * @param {object} params
      * @param post
+     * @param origin
      * @returns {string}
      */
-    static openApp(params: Record<any, any>, post = false) {
+    static openApp(params: Record<any, any>, post = false, origin = process.env.APP_URL) {
         const query = Url.objectToQuery(params);
         const file = post ? 'post-message' : 'openapp';
 
-        return '/static/utils/' + file + '.html?' + query;
+        return (origin || '') + '/static/utils/' + file + '.html?' + query;
     }
 
 }
