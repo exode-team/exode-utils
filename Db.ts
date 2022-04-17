@@ -60,6 +60,15 @@ class Db {
         return this.whereField(field, value);
     }
 
+    static fullTextSearch(field: string, value: any) {
+        const param = customAlphabet(String(field).replace(/"/g, ''), 4)();
+
+        return [
+            `to_tsvector(${field}) @@ to_tsquery(:${param})`,
+            { [param]: value },
+        ] as [ string, Record<string, any> ];
+    }
+
 }
 
 /**
