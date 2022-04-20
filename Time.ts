@@ -58,7 +58,6 @@ class Time {
      */
     static getDaysLeft(to: Date | string, from?: Date | string): number {
         const source = moment(from || new Date());
-
         const target = moment(to);
 
         return target.diff(source, 'days');
@@ -72,10 +71,11 @@ class Time {
      */
     static getAge(from: Date | string, to?: Date | string): number | string {
         const source = moment(from);
-
         const target = moment(to || new Date());
 
-        return target.diff(source, 'years') ? target.diff(source, 'years') + ' лет' : '';
+        return target.diff(source, 'years')
+            ? target.diff(source, 'years') + ' лет'
+            : '';
     }
 
     /**
