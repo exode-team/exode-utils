@@ -65,6 +65,20 @@ class Time {
     }
 
     /**
+     * Get age
+     * @param {Date | string} to
+     * @param {Date | string} from
+     * @returns {number | string}
+     */
+    static getAge(from: Date | string, to?: Date | string): number | string {
+        const source = moment(from);
+
+        const target = moment(to || new Date());
+
+        return target.diff(source, 'years') ? target.diff(source, 'years') + ' лет' : '';
+    }
+
+    /**
      * Parse date to VKUI datepicker
      * @param {Date | string} date
      * @returns {{month: number, year: number, day: number}}
