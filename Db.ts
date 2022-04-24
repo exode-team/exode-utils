@@ -72,7 +72,7 @@ class Db {
     static orderByField(field: string, order: (string | number)[]) {
         const cases = order.map((e, i) => `WHEN "${field}" = '${e}' THEN ${i}`);
 
-        return `CASE ${cases.join(' ')} END`;
+        return `CASE ${cases.join(' ')} ELSE ${order.length} END`;
     }
 
 }
