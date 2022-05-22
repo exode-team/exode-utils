@@ -114,7 +114,58 @@ class Time {
      * @returns {string}
      */
     static toFullDate(year: string | number, month: string | number, date: string | number) {
-        return `${year}-${('0' + month).slice(-2)}-${('0' + date).slice(-2)}`
+        return `${year}-${('0' + month).slice(-2)}-${('0' + date).slice(-2)}`;
+    }
+
+    /**
+     * Get list options to calendar
+     * @returns {}
+     */
+    static getCalendarOptions() {
+        const monthNames: string[] = [
+            'Января',
+            'Февраля',
+            'Марта',
+            'Апреля',
+            'Мая',
+            'Июня',
+            'Июля',
+            'Августа',
+            'Сентября',
+            'Октября',
+            'Ноября',
+            'Декабря',
+        ];
+
+        const getMonthMaxDay = (month?: number, year?: number) => {
+            return month ? new Date(year || 2016, month, 0).getDate() : 31;
+        };
+
+        const range = (start: number, end: number) => {
+            const swap = start > end;
+            const arr = [];
+            for (let i = Math.min(start, end); i <= Math.max(start, end); i++) {
+                arr.push(i);
+            }
+            return swap ? arr.reverse() : arr;
+        };
+
+        const dayOptions = (month?: number, year?: number) => range(1, getMonthMaxDay(month || 1, year || 2022)).map((value) => ({
+            label: String(value),
+            value: String(value),
+        }));
+
+        const monthOptions = (monthNames).map((name, index) => ({
+            label: name,
+            value: String(index + 1),
+        }));
+
+        const yearOptions = range(2015, 1900).map((value) => ({
+            label: String(value),
+            value: String(value),
+        }));
+
+        return { dayOptions, monthOptions, yearOptions };
     }
 
 }
