@@ -106,6 +106,17 @@ class Time {
             .format();
     }
 
+    /**
+     * Format to full date
+     * @param {string | number} year
+     * @param {string | number} month
+     * @param {string | number} date
+     * @returns {string}
+     */
+    static toFullDate(year: string | number, month: string | number, date: string | number) {
+        return `${year}-${('0' + month).slice(-2)}-${('0' + date).slice(-2)}`
+    }
+
 }
 
 
