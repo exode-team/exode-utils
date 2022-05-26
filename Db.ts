@@ -75,6 +75,16 @@ class Db {
         return `CASE ${cases.join(' ')} ELSE ${order.length} END`;
     }
 
+    static wrapKeyBrackets(record: Record<string, any>) {
+        const result: Record<string, any> = {};
+
+        for (const [ key, value ] of Object.entries(record)) {
+            result[`"${key}"`] = value;
+        }
+
+        return result;
+    }
+
 }
 
 /**
