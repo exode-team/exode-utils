@@ -73,8 +73,15 @@ class Time {
         const source = moment(from);
         const target = moment(to || new Date());
 
+        const getAgeNaming = (number: number) => {
+            const cases = [ 2, 0, 1, 1, 1, 2 ];
+            const plurals = [ 'год', 'года', 'лет' ];
+
+            return plurals[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+        };
+
         return target.diff(source, 'years')
-            ? target.diff(source, 'years') + ' лет'
+            ? target.diff(source, 'years') + ' ' + getAgeNaming(target.diff(source, 'years'))
             : '';
     }
 
