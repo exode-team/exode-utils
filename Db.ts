@@ -78,7 +78,7 @@ class Db {
     static wrapKeyBrackets(record: Record<string, any>) {
         const result: Record<string, any> = {};
 
-        for (const [ key, value ] of record.entries()) {
+        for (const [ key, value ] of Object.entries(record)) {
             result[`"${key}"`] = value;
         }
 
