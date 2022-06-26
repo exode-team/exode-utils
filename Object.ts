@@ -10,6 +10,23 @@ import * as _ from 'lodash';
 class ObjectUtil {
 
     /**
+     * Create map collection
+     * @param {Record<any, any>[]} object
+     * @param {string} keyField
+     * @param valueField
+     * @returns {Map<any, any>}
+     */
+    static makeDict(object: Record<any, any>[], keyField: string = 'id', valueField: string = null) {
+        const map = new Map();
+
+        for (const item of object) {
+            map.set(_.get(item, keyField), valueField ? _.get(item, item) : item);
+        }
+
+        return map;
+    }
+
+    /**
      * Collecting property values by object key
      * @param {object} object
      * @param {string | number} key
