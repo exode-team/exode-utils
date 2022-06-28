@@ -16,7 +16,7 @@ class ObjectUtil {
      * @param valueField
      * @returns {Map<any, any>}
      */
-    static makeDict(object: Record<any, any>[], keyField: string = 'id', valueField: string = null) {
+    static makeDict(object: Record<any, any>[], keyField: string = 'id', valueField: string = '') {
         const map = new Map();
 
         for (const item of object) {
